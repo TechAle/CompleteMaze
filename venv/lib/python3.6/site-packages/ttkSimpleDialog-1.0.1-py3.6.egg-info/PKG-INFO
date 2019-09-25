@@ -1,0 +1,25 @@
+Metadata-Version: 1.1
+Name: ttkSimpleDialog
+Version: 1.0.1
+Summary: ttk themed version of ttkSimpleDialog
+Home-page: holmesengineering.com
+Author: Tyler Holmes
+Author-email: tylerdanielholmes@gmail.com
+License: UNKNOWN
+Description: Identical to the tkSimpleDialog module, except the widgets used are ttk themed widgets.
+        Here is an example of how to use it::
+        
+            from ttkSimpleDialog import ttkSimpleDialog
+            
+            user_response = ttkSimpleDialog.askinteger(title="hello", prompt="Enter a number")
+        
+        Please note you must call it using the "from __ import __" syntax!
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Plugins
+Classifier: Intended Audience :: Developers
+Classifier: License :: Freely Distributable
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Natural Language :: English
+Classifier: Topic :: Software Development :: User Interfaces
