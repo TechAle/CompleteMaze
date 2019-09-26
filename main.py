@@ -1,7 +1,7 @@
 ## inspired from https://www.youtube.com/watch?v=uuUbdluqSiE ##
-## it doesnt work for now
+## it works but it's bad optimized
+## TODO make it better
 from tkinter import *
-import numpy as np
 import time
 Lista = []
 rows = 0
@@ -230,7 +230,7 @@ class main():
         ## global variable
         global rows, Lista, cell
         ## Lista of all moves
-        mov_ = [rows,-rows,1,-1]
+        mov_ = [rows,1,-rows,-1]
         ## prev index array
         prev = 0
         ## create a "repistory" where add all the mouvement
@@ -245,31 +245,29 @@ class main():
                     if Lista[Lista_check[i]["cell"] + j]["color"] == "white":
                         Lista[Lista_check[i]["cell"] + j]['color'] = 'green'
                         Lista_check.append({"cell": Lista_check[i]["cell"] + j, "prev": Lista_check[i]["cell"]})
+                        self.draw_grid()
+                        self.canvas.update_idletasks()
 
                 else:
                     print("fine")
                     fin = False
                     ## print soluction
+                    Lista_check.append({"cell": Lista_check[i]["cell"] + j, "prev": Lista_check[i]["cell"]})
                     n_list = [list(i.values()) for i in Lista_check]
-                    now = n_list[-1][0]
+                    now = n_list[-1][1]
                     while now != cell["spawn"]:
                         Lista[now]['color'] = "red"
                         ok = True
                         j = 1
                         print(n_list)
-                        while n_list[j][1] != now:
-                            if n_list[j][1] == now:
-                                now = n_list[j][0]
+                        while ok:
+                            if n_list[j][0] == now:
+                                ok = not ok
+                                now = n_list[j][1]
                             else:
-                                print(n_list[j][1],now)
                                 j += 1
                         self.draw_grid()
                         self.canvas.update_idletasks()
-                        self.root.after(100)
-
-            self.draw_grid()
-            self.canvas.update_idletasks()
-            self.root.after(300)
             i += 1
             limit = len(Lista_check)
 
